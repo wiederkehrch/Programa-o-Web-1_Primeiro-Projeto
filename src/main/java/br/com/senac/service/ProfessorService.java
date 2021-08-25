@@ -1,5 +1,7 @@
 package br.com.senac.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,11 @@ public class ProfessorService {
 	public Professor salvar (Professor prof) {
 		
 		return repo.save(prof);
+	}
+	
+	
+public List<Professor> buscarTodosProfessores () {
+		
+		return repo.findAll();
 	}
 }
