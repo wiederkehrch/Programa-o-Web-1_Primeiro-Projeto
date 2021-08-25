@@ -1,5 +1,7 @@
 package br.com.senac.inicializacao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -21,6 +23,21 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 		Aluno aluno1 = new Aluno();
 		aluno1.setNome("Maria");
 		alunoService.salvar(aluno1);
+		
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Lucas");
+		alunoService.salvar(aluno2);
+		
+		Aluno aluno3 = new Aluno();
+		aluno3.setNome("Vanessa");
+		alunoService.salvar(aluno3);
+		
+		
+		List<Aluno> listaAlunos = alunoService.buscarTodosAlunos();
+		
+		for (Aluno aluno: listaAlunos) {
+			System.out.println(aluno.getNome());
+		}
 	}
 
 }
