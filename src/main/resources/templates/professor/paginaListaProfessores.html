@@ -52,7 +52,16 @@
 				 					
 				 						<td th:text ="${professor.id}"></td>
 				 						<td th:text ="${professor.nome}"></td>
-				 						<td></td>
+				 						<td>
+				 						
+				 							<div class="btn-group pull-right">
+				 							
+				 								<a class="btn btn-sm btn-primary" th:href="@{/professor/alterarProfessor/{idProfessor} (idProfessor=${professor.id})}">Alterar</a>
+				 								<a class="delete btn-sm btn-danger" th:href="@{/professor/excluirProfessor/{idProfessor} (idProfessor=${professor.id})}">Excluir</a>
+				 							
+				 							</div>
+				 						
+				 						</td>
 				 					
 				 					</tr>
 				 				
