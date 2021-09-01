@@ -53,7 +53,16 @@
 				 					
 				 						<td th:text ="${aluno.id}"></td>
 				 						<td th:text ="${aluno.nome}"></td>
-				 						<td></td>
+				 						<td>
+				 						
+				 							<div class="btn-group pull-right">
+				 							
+				 								<a class="btn btn-sm btn-primary" th:href="@{/aluno/alterarAluno/{idAluno} (idAluno=${aluno.id})}">Alterar</a>
+				 								<a class="delete btn-sm btn-danger" th:href="@{/aluno/excluirAluno/{idAluno} (idAluno=${aluno.id})}">Excluir</a>
+				 							
+				 							</div>
+				 						
+				 						</td>
 				 					
 				 					</tr>
 				 				
