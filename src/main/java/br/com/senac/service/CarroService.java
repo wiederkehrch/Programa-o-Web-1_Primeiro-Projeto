@@ -45,7 +45,9 @@ public class CarroService {
 	public Carro edit (Carro carro) throws ObjectNotFoundException {
 		
 		Carro carroAntigo = search(carro.getId());
+		carroAntigo.setId(carro.getId());
 		carroAntigo.setModelo(carro.getModelo());
+		carroAntigo.setChave(carro.getChave());
 		return save(carroAntigo);
 	}
 	

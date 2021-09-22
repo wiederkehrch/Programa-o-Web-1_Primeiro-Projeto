@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Carro implements Serializable {
@@ -17,6 +19,10 @@ public class Carro implements Serializable {
 	private Integer id;
 	
 	private String modelo;
+	
+	@OneToOne
+	@JoinColumn(name = "id_chave")
+	private Chave chave;
 
 			
 	
@@ -37,5 +43,15 @@ public class Carro implements Serializable {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+
+	public Chave getChave() {
+		return chave;
+	}
+
+	public void setChave(Chave chave) {
+		this.chave = chave;
+	}
+	
+	
 
 }
