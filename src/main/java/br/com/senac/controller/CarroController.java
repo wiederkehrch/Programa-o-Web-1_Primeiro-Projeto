@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.senac.domain.Carro;
 import br.com.senac.service.CarroService;
 import br.com.senac.service.ChaveService;
+import br.com.senac.service.DocumentoService;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Controller                          
@@ -23,6 +24,10 @@ public class CarroController {
 	
 	@Autowired
 	private ChaveService chaveService;
+	
+	
+	@Autowired
+	private DocumentoService documentoService;
 	
 	
 	@GetMapping ("/listar")
@@ -40,6 +45,7 @@ public class CarroController {
 			
 		ModelAndView mv = new ModelAndView("carro/cadastraCarro");
 		mv.addObject("chaves", chaveService.searchAll());
+		mv.addObject("documentos", documentoService.searchAll());
 		mv.addObject("carro", new Carro());
 		return mv;
 		}
@@ -67,6 +73,7 @@ public class CarroController {
 		ModelAndView mv = new ModelAndView("carro/alteraCarro");
 		mv.addObject("carro", carroService.search(id));
 		mv.addObject("chaves", chaveService.searchAll());
+		mv.addObject("documentos", documentoService.searchAll());
 		return mv;
 	}
 	

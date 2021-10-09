@@ -20,9 +20,17 @@ public class Carro implements Serializable {
 	
 	private String modelo;
 	
+	
+	//Incluir Chave no Carro
 	@OneToOne
 	@JoinColumn(name = "id_chave")
 	private Chave chave;
+	
+	
+	//Incluir Documento no Carro
+	@OneToOne
+	@JoinColumn(name = "id_documento")
+	private Documento documento;
 
 			
 	
@@ -50,6 +58,14 @@ public class Carro implements Serializable {
 
 	public void setChave(Chave chave) {
 		this.chave = chave;
+	}
+
+	public Documento getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(Documento documento) {
+		this.documento = documento;
 	}
 	
 	
