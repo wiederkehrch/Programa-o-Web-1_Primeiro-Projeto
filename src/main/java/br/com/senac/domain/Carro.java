@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,16 +22,22 @@ public class Carro implements Serializable {
 	private String modelo;
 	
 	
-	//Incluir Chave no Carro
+	//Incluir Chave no Carro (cada carro possui uma única chave)
 	@OneToOne
 	@JoinColumn(name = "id_chave")
 	private Chave chave;
 	
 	
-	//Incluir Documento no Carro
+	//Incluir Documento no Carro (cada carro possui um único documento)
 	@OneToOne
 	@JoinColumn(name = "id_documento")
 	private Documento documento;
+	
+	
+	//Incluir Fabricante no Carro (vários carros podem ser de um mesmo fabricante)
+	@ManyToOne
+	@JoinColumn(name = "id_fabricante")
+	private Fabricante fabricante;
 
 			
 	
@@ -67,7 +74,14 @@ public class Carro implements Serializable {
 	public void setDocumento(Documento documento) {
 		this.documento = documento;
 	}
-	
+
+	public Fabricante getFabricante() {
+		return fabricante;
+	}
+
+	public void setFabricante(Fabricante fabricante) {
+		this.fabricante = fabricante;
+	}
 	
 
 }

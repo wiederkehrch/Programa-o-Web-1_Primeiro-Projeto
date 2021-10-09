@@ -12,6 +12,7 @@ import br.com.senac.domain.Carro;
 import br.com.senac.service.CarroService;
 import br.com.senac.service.ChaveService;
 import br.com.senac.service.DocumentoService;
+import br.com.senac.service.FabricanteService;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Controller                          
@@ -30,6 +31,10 @@ public class CarroController {
 	private DocumentoService documentoService;
 	
 	
+	@Autowired
+	private FabricanteService fabricanteService;
+	
+	
 	@GetMapping ("/listar")
 	public ModelAndView listarCarros() {
 		
@@ -46,6 +51,7 @@ public class CarroController {
 		ModelAndView mv = new ModelAndView("carro/cadastraCarro");
 		mv.addObject("chaves", chaveService.searchAll());
 		mv.addObject("documentos", documentoService.searchAll());
+		mv.addObject("fabricantes", fabricanteService.searchAll());
 		mv.addObject("carro", new Carro());
 		return mv;
 		}
@@ -74,6 +80,7 @@ public class CarroController {
 		mv.addObject("carro", carroService.search(id));
 		mv.addObject("chaves", chaveService.searchAll());
 		mv.addObject("documentos", documentoService.searchAll());
+		mv.addObject("fabricantes", fabricanteService.searchAll());
 		return mv;
 	}
 	
