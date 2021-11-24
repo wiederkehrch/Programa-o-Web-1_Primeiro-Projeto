@@ -1,12 +1,15 @@
 package br.com.senac.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -38,6 +41,16 @@ public class Carro implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_fabricante")
 	private Fabricante fabricante;
+	
+	
+	/*Um carro pode ter vários acessórios. Por isso precisa de uma lista para os acessórios.
+	 * E um acessório pode estar em vários carros. */
+	@ManyToMany
+	@JoinTable(
+			name = "carro_acessorio",
+			joinColumns = {@JoinColumn(name = "id_carro")},
+			inverseJoinColumns = {@JoinColumn(name = "id_acessorio")})
+	private List<Acessorio> acessorios;
 
 			
 	
@@ -82,6 +95,15 @@ public class Carro implements Serializable {
 	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
 	}
+
+	public List<Acessorio> getAcessorios() {
+		return acessorios;
+	}
+
+	public void setAcessorios(List<Acessorio> acessorios) {
+		this.acessorios = acessorios;
+	}
 	
 
+	
 }

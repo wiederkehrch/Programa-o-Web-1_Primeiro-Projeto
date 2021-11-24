@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.senac.domain.Carro;
+import br.com.senac.service.AcessorioService;
 import br.com.senac.service.CarroService;
 import br.com.senac.service.ChaveService;
 import br.com.senac.service.DocumentoService;
@@ -35,6 +36,10 @@ public class CarroController {
 	private FabricanteService fabricanteService;
 	
 	
+	@Autowired
+	private AcessorioService acessorioService;
+	
+	
 	@GetMapping ("/listar")
 	public ModelAndView listarCarros() {
 		
@@ -52,6 +57,7 @@ public class CarroController {
 		mv.addObject("chaves", chaveService.searchAll());
 		mv.addObject("documentos", documentoService.searchAll());
 		mv.addObject("fabricantes", fabricanteService.searchAll());
+		mv.addObject("acessorios", acessorioService.searchAll());
 		mv.addObject("carro", new Carro());
 		return mv;
 		}
@@ -81,6 +87,7 @@ public class CarroController {
 		mv.addObject("chaves", chaveService.searchAll());
 		mv.addObject("documentos", documentoService.searchAll());
 		mv.addObject("fabricantes", fabricanteService.searchAll());
+		mv.addObject("acessorios", acessorioService.searchAll());
 		return mv;
 	}
 	

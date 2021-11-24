@@ -50,6 +50,7 @@ public class CarroService {
 		carroAntigo.setChave(carro.getChave());
 		carroAntigo.setDocumento(carro.getDocumento());
 		carroAntigo.setFabricante(carro.getFabricante());
+		carroAntigo.setAcessorios(carro.getAcessorios());
 		return save(carroAntigo);
 	}
 	
